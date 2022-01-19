@@ -1,0 +1,26 @@
+---
+# tasks file for roles/cron
+
+- name: Create a directory if it does not exist
+  file:
+    path: /job/
+    state: directory
+    mode: '0755'
+
+- name: Create a script
+  template:
+    src: ../templates/report.j2
+    dest: /job/report.sh
+    owner: root
+    group: root
+    mode: '0775'
+
+- name: Setup cronjob"
+  ansible.builtin.cron:
+    name: "Disk usage logs"
+    minute: "0"
+    hour: "12"
+    job: "/job/report.sh"
+
+- name: Run the logger first time
+  script: /job/report.sh

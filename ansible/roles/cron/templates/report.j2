@@ -1,0 +1,12 @@
+#!/bin/bash
+
+#Directory where logs will be save
+LOGS={{LOG_PATH}}
+#logs file name
+LOG_FILE={{LOG_FILE}}
+
+DATE=$(date|awk '{print $2 " " $3 " "$4" " $1}')
+DISK=$(du -sch /* |tail -1 |awk '/total/{print $1}')
+
+
+echo -e "Date= $DATE  -  Disk Usage= $DISK \n" >> $LOGS/$LOG_FILE
