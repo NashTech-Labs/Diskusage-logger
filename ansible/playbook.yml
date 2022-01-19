@@ -1,0 +1,6 @@
+---
+- name: Setup a root cronjob"
+  hosts: local
+  become: true
+  roles:
+    - cron

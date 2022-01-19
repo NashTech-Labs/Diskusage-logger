@@ -1,0 +1,5 @@
+---
+# vars file for roles/cron
+LOG_FILE: diskusage.log
+
+LOG_PATH: /var/log
